@@ -11,12 +11,20 @@ const prisma = new PrismaClient();
 
 const port: number = 3000;
 
+const userRouters = require ('./app/routes/user')
+app.use(userRouters)
+
+const registerRouters = require ('./app/routes/register')
+app.use(registerRouters)
+
+const loginRouters = require ('./app/routes/login')
+app.use(loginRouters)
+
 app.post("/login", async (req: Request, res: Response) => {
   try {
     const email = req.body.email;
     const password = req.body.password;
 
-    // Obtener el usuario correspondiente al correo electrónico
     const user = await prisma.user.findUnique({
       where: { email: email },
     });
