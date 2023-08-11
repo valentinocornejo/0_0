@@ -4,8 +4,8 @@ const  router = express.Router()
 
 const path = 'user'
 
-route.get(
-    `${path}/ `,
+router.get(
+    `/${path} `,
     controller.getData
 )
 
